@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/yacob89/sevenminutes-react.svg?branch=master)](https://travis-ci.org/yacob89/sevenminutes-react)
 [![Dependency Status](https://david-dm.org/yacob89/sevenminutes-react.svg)](https://david-dm.org/yacob89/sevenminutes-react)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fyacob89%2Fsevenminutes-react.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fyacob89%2Fsevenminutes-react?ref=badge_shield)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -57,3 +58,6 @@ VII. **Petition** – Asking the Lord for needs, growth and persons that need sa
 ```
 
 
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fyacob89%2Fsevenminutes-react.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fyacob89%2Fsevenminutes-react?ref=badge_large)
