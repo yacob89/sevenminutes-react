@@ -1,3 +1,5 @@
+# Seven Minutes With The Lord
+
 [![Build Status](https://travis-ci.org/yacob89/sevenminutes-react.svg?branch=master)](https://travis-ci.org/yacob89/sevenminutes-react)
 [![Dependency Status](https://david-dm.org/yacob89/sevenminutes-react.svg)](https://david-dm.org/yacob89/sevenminutes-react)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fyacob89%2Fsevenminutes-react.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fyacob89%2Fsevenminutes-react?ref=badge_shield)
