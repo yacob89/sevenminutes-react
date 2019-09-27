@@ -17,8 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "aws s3 sync build/ s3://sevenminuteswiththelord"
   },
   "eslintConfig": {
     "extends": "react-app"
