@@ -12,7 +12,7 @@ export default class HomepageHeading extends Component {
     super(props);
     this.state = {
       titleDisplay: "inline-block",
-      timerDisplay: "inline-block",
+      timerDisplay: "none",
       timerStart: false,
       timerPause: false,
       initialTime: 11000,
@@ -30,6 +30,7 @@ export default class HomepageHeading extends Component {
     7. petition 61
     */
     this.startTimer = this.startTimer.bind(this);
+    this.changeTime = this.changeTime.bind(this);
   }
 
   startTimer(start) {
@@ -38,65 +39,113 @@ export default class HomepageHeading extends Component {
     this.setState({ timerStart: true });
   }
 
+  changeTime(time) {
+    var currentTask = this.state.currentTask;
+    var nextTime = 6000;
+    if (currentTask === "calling") {
+      this.setState({ initialTime: nextTime });
+    }
+    if (currentTask === "praying") {
+      this.setState({ initialTime: nextTime });
+    }
+    if (currentTask === "prayreading") {
+      this.setState({ initialTime: nextTime });
+    }
+    if (currentTask === "confession") {
+      this.setState({ initialTime: nextTime });
+    }
+    if (currentTask === "consecration") {
+      this.setState({ initialTime: nextTime });
+    }
+    if (currentTask === "thanksgiving") {
+      this.setState({ initialTime: nextTime });
+    }
+    if (currentTask === "petition") {
+      this.setState({ initialTime: nextTime });
+    }
+    console.log("Initial time stop: ", this.state.initialTime);
+    console.log("Task stop: ", this.state.currentTask);
+  }
+
   render() {
     const { mobile } = this.props;
 
     return (
       <Container text textAlign="center">
-        <div style={{display:"none"}}>
-        <TimerMachine
-          timeStart={this.state.initialTime} // start at 10 seconds
-          timeEnd={0 * 1000} // end at 20 seconds
-          started={this.state.timerStart}
-          paused={this.state.timerPause}
-          countdown={true} // use as stopwatch
-          interval={1000} // tick every 1 second
-          formatTimer={(time, ms) =>
-            moment.duration(ms, "milliseconds").format("h:mm:ss")
-          }
-          onStart={time =>
-            console.info(`Timer started: ${JSON.stringify(time)}`)
-          }
-          onStop={time =>{
-            console.info(`Timer stopped: ${JSON.stringify(time)}`);
-            var currentTask = this.state.currentTask;
-            var currentTime = this.state.initialTime;
-            var nextTime = 6000;
-            if(currentTask === "calling"){
-              this.setState({ initialTime: nextTime });
-              console.log("Initial time: ", this.state.initialTime);
+        <div style={{ display: "none" }}>
+          <TimerMachine
+            timeStart={this.state.initialTime} // start at 10 seconds
+            timeEnd={0 * 1000} // end at 20 seconds
+            started={this.state.timerStart}
+            paused={this.state.timerPause}
+            countdown={true} // use as stopwatch
+            interval={1000} // tick every 1 second
+            formatTimer={(time, ms) =>
+              moment.duration(ms, "milliseconds").format("h:mm:ss")
             }
-          }}
-          onTick={time => {
-            console.info(`Timer ticked: ${JSON.stringify(time)}`);
-            console.log("Detik: ", time.s);
-            this.setState({ tick: time.s });
-          }}
-          onPause={time =>
-            console.info(`Timer paused: ${JSON.stringify(time)}`)
-          }
-          onResume={time =>
-            console.info(`Timer resumed: ${JSON.stringify(time)}`)
-          }
-          onComplete={time => {
-            console.info(`Timer completed: ${JSON.stringify(time)}`);
-            var currentTask = this.state.currentTask;
-            var currentTime = this.state.initialTime;
-            var nextTime = 6000;
-            if(currentTask === "calling"){
-              this.setState({ currentTask: "praying" });
-              this.setState({ initialTime: nextTime });
-              this.setState({ timerStart: true });
-              console.log("Initial time: ", this.state.initialTime);
+            onStart={time =>
+              console.info(`Timer started: ${JSON.stringify(time)}`)
             }
-            else{
-              this.setState({ timerStart: false });
+            onStop={time => {
+              console.info(`Timer stopped: ${JSON.stringify(time)}`);
+              this.changeTime();
+            }}
+            onTick={time => {
+              console.info(`Timer ticked: ${JSON.stringify(time)}`);
+              console.log("Detik: ", time.s);
+              this.setState({ tick: time.s });
+            }}
+            onPause={time =>
+              console.info(`Timer paused: ${JSON.stringify(time)}`)
             }
-          }}
-        />
-
+            onResume={time =>
+              console.info(`Timer resumed: ${JSON.stringify(time)}`)
+            }
+            onComplete={time => {
+              console.info(`Timer completed: ${JSON.stringify(time)}`);
+              var currentTask = this.state.currentTask;
+              if (currentTask === "calling") {
+                this.setState({ currentTask: "praying" });
+                this.setState({ timerStart: true });
+                console.log("Initial time: ", this.state.initialTime);
+              }
+              if (currentTask === "praying") {
+                this.setState({ currentTask: "prayreading" });
+                this.setState({ timerStart: true });
+                console.log("Initial time: ", this.state.initialTime);
+              }
+              if (currentTask === "prayreading") {
+                this.setState({ currentTask: "confession" });
+                this.setState({ timerStart: true });
+                console.log("Initial time: ", this.state.initialTime);
+              }
+              if (currentTask === "confession") {
+                this.setState({ currentTask: "consecration" });
+                this.setState({ timerStart: true });
+                console.log("Initial time: ", this.state.initialTime);
+              }
+              if (currentTask === "consecration") {
+                this.setState({ currentTask: "thanksgiving" });
+                this.setState({ timerStart: true });
+                console.log("Initial time: ", this.state.initialTime);
+              }
+              if (currentTask === "thanksgiving") {
+                this.setState({ currentTask: "petition" });
+                this.setState({ timerStart: true });
+                console.log("Initial time: ", this.state.initialTime);
+              }
+              if (currentTask === "petition") {
+                this.setState({ currentTask: "ending" });
+                this.setState({ timerStart: true });
+                console.log("Initial time: ", this.state.initialTime);
+              }
+              //this.setState({ tick: this.state.initialTime / 1000 - 1 });
+              console.log("Initial time complete: ", this.state.initialTime);
+              console.log("Task complete: ", this.state.currentTask);
+            }}
+          />
         </div>
-        
+
         <div style={{ display: this.state.titleDisplay }}>
           <Header
             as="h1"
@@ -111,7 +160,7 @@ export default class HomepageHeading extends Component {
           />
           <Header
             as="h2"
-            content="Do whatever you want when you want to."
+            content="Let's begin contacting The Lord."
             inverted
             style={{
               fontSize: mobile ? "1.5em" : "1.7em",
@@ -127,7 +176,7 @@ export default class HomepageHeading extends Component {
         <div style={{ display: this.state.timerDisplay }}>
           <Header
             as="h2"
-            content="Do whatever you want when you want to."
+            content={this.state.currentTask}
             inverted
             style={{
               fontSize: mobile ? "1.5em" : "1.7em",
