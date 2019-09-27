@@ -17,6 +17,7 @@ export default class HomepageHeading extends Component {
       timerPause: false,
       initialTime: 11000,
       currentTask: "calling",
+      currentText: "Calling",
       tick: 10
     };
     // Tasks:
@@ -94,6 +95,32 @@ export default class HomepageHeading extends Component {
               console.info(`Timer ticked: ${JSON.stringify(time)}`);
               console.log("Detik: ", time.s);
               this.setState({ tick: time.s });
+              if(time.s === this.state.initialTime/1000 - 1){
+                if (this.state.currentTask === "calling") {
+                  this.setState({ currentText: "Calling" });
+                }
+                if (this.state.currentTask === "praying") {
+                  this.setState({ currentText: "Praying" });
+                }
+                if (this.state.currentTask === "prayreading") {
+                  this.setState({ currentText: "Pray Reading" });
+                }
+                if (this.state.currentTask === "confession") {
+                  this.setState({ currentText: "Confession" });
+                }
+                if (this.state.currentTask === "consecration") {
+                  this.setState({ currentText: "Consecration" });
+                }
+                if (this.state.currentTask === "thanksgiving") {
+                  this.setState({ currentText: "Thanks Giving" });
+                }
+                if (this.state.currentTask === "petition") {
+                  this.setState({ currentText: "Petition" });
+                }
+                if (this.state.currentTask === "ending") {
+                  this.setState({ currentText: "Have a nice day, Grace be with you" });
+                }
+              }
             }}
             onPause={time =>
               console.info(`Timer paused: ${JSON.stringify(time)}`)
@@ -176,7 +203,7 @@ export default class HomepageHeading extends Component {
         <div style={{ display: this.state.timerDisplay }}>
           <Header
             as="h2"
-            content={this.state.currentTask}
+            content={this.state.currentText}
             inverted
             style={{
               fontSize: mobile ? "1.5em" : "1.7em",
